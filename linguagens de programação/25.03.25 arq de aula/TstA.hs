@@ -4,3 +4,4 @@ module TstA where
                 | Empresa String Integer String String
                 | Individuo String String Bool
                 deriving Show
+--comentario
