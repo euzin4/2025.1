@@ -1,0 +1,170 @@
+﻿Comandos Básicos do Git
+Parte 1: Exemplos de Comandos (Repositório Local)
+git -- version
+1. Configuração Inicial do Git
+
+
+Configurar nome de usuário e e-mail
+git config --global user.name "Seu Nome"
+git config user.name
+git config --global user.email "seuemail@example.com"
+git config user.email
+2. Criando e Inicializando um Repositório
+
+
+Criar um novo diretório e entrar nele
+mkdir meu_repositorio
+cd meu_repositorio
+
+
+Inicializar o Git no diretório
+git init
+3. Criando e Gerenciando Arquivos
+Criar um arquivo e adicioná-lo ao Git
+echo "Primeira versão do arquivo" > arquivo.html
+git add arquivo.html
+
+
+git commit -m "Adiciona arquivo.html"
+4. Visualizando o Status do Repositório
+git status
+
+
+5. Verificando o Histórico de Commits
+git log
+6. Alterando Arquivos e Criando Novos Commits
+Editar um arquivo
+echo "Nova linha adicionada" >> arquivo.html
+
+
+git add arquivo.html
+git commit -m "Atualiza arquivo.html com nova linha"
+
+
+7. Revertendo Modificações Antes do Commit
+
+
+Reverter arquivo ao estado antes da modificação
+git checkout -- arquivo.html
+8. Voltando a um Estado Anterior
+
+
+Ver commits e copiar um hash antigo
+git log --oneline
+
+
+Retornar a um commit específico
+git checkout <hash-do-commit>
+
+
+9. Criando e Alternando Entre Branches
+
+
+Criar um novo branch
+git branch nova-feature
+
+
+ Mudar para o novo branch
+git checkout nova-feature
+
+
+9. Ignorando Arquivos com .gitignore
+Criar um arquivo .gitignore
+echo "senhas.txt" > .gitignore
+
+
+Adicionar o arquivo .gitignore ao controle de versão
+git add .gitignore
+git commit -m "Adiciona regras de exclusão no .gitignore"
+
+
+Exemplo de um .gitignore
+
+
+# Ignora todos os arquivos .txt
+*.txt
+# Ignora arquivos que começam com "erro" e terminam com .log
+erro?.log
+# Ignora arquivos "teste-" seguidos de números de 0 a 9 e terminando em .log
+teste-[0-9].log
+# Exceção: não ignora o arquivo "teste-4.log"
+!teste-4.log
+
+9. Etiquetas com git tag 
+
+
+Serve para criar etiquetas de estados que sejam relevantes, como por exemplo, a versão final ou alguma versão já utilizável do projeto
+
+
+Colocando o nome da tag após o -a e uma mensagem qualquer depois do -m
+git tag -a v1.0 -m 'Minha versão 1.0' 
+
+
+Criar uma tag sem anotações 
+git tag -a v1.1
+
+
+Marcar um commit depois de já tê-lo feito se usa o comando git tag com o nome da versão e a soma de verificação do commit
+git tag v1.2 166 ae0c4d3f420721acbb115cc33848dfcc2121a
+
+
+Ver informações da tag
+git show v1.1
+
+
+________________
+Parte 2: Exercícios
+Exercício 1: Configurando o Ambiente
+1. Configure seu nome e e-mail no Git.
+
+2. Inicialize um repositório Git em um diretório novo chamado IDWeb.
+
+Exercício 2: Trabalhando com Arquivos
+   1. Crie um arquivo chamado notas.txt e escreva algo nele.
+
+   2. Adicione o arquivo ao controle de versão e faça um commit.
+
+   3. Modifique o arquivo notas.txt, adicionando uma nova linha de texto.
+
+   4. Verifique o status do repositório e faça um novo commit com a alteração.
+
+Exercício 3: Revertendo Mudanças
+      1. Edite notas.txt novamente, mas não adicione ao staging.
+
+      2. Use git checkout -- notas.txt para descartar a alteração.
+
+      3. Confirme que o arquivo voltou ao estado anterior.
+
+Exercício 4: Explorando o Histórico
+         1. Use git log para ver os commits realizados.
+
+         2. Volte para um commit anterior usando git checkout <hash>.
+
+         3. Retorne para o estado mais recente do repositório usando git checkout master.
+
+Exercício 5: Trabalhando com Branches
+            1. Crie um branch chamado nova-ideia.
+
+            2. Mude para esse branch e crie um novo arquivo ideia.txt.
+
+            3. Adicione o arquivo e faça um commit.
+
+            4. Volte para a branch master e confirme que ideia.txt não está presente.
+Exercício 6: Trabalhando com .gitignore
+               1. No repositório IDWeb, crie um arquivo .gitignore.
+
+               2. Adicione as seguintes regras para ignorar arquivos:
+                  1. Arquivos que começam com "erro" e terminam em .log
+                  3. Crie os arquivos erro.txt, teste-1.log, erro-4.log e erro3.log.
+                  4. Use git status e verifique quais arquivos aparecem como não rastreados.
+                  5. Adicione o .gitignore ao Git e faça um commit:
+                  6. Confirme que os arquivos ignorados realmente não foram adicionados ao controle de versão.
+Exercício 7: Trabalhando com Tags no Git
+                  1. No repositório IDWeb, crie um arquivo chamado versao.txt e escreva "Versão inicial".
+                  2. Adicione e faça um commit desse arquivo.
+                  3. Crie uma tag anotada chamada v1.0 para marcar essa versão ("Versão 1.0 do projeto")
+                  4. Edite versao.txt e adicione "Atualização na versão".
+                  5. Faça um novo commit com essa modificação.
+                  6. Marque esse commit com uma tag leve chamada v1.1.
+                  7. Verifique as tags criadas no repositório.
+                  8. Consulte informações detalhadas da tag v1.0

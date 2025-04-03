@@ -1,0 +1,20 @@
+//---repositorio "master"(projeto_alpha)
+git config --global user.name "gokw"			//configura o nome de usuario
+git config --global user.email "gokw@uffs.edu.br"	//configura o email
+git init --bare		//inicia o repositorio 'master'
+git merge nomeDaBranch	//os arquivos da 'nomeDaBranch' são adicionados a branch usada no momento
+
+dentro da pasta "master"
+git config receive.denyCurrentBranch 'warn'	//libera o push dos clones
+
+//---repositorio clone do "master"(projeto_beta)
+git clone projeto_alpha projeto_beta
+git status
+git add arquivo.txt	//adiciona o arquivo.txt na area de staging
+git add .		//adiciona todos os arquivos da pasta na area de staging
+git commit -m "descriçao das mudanças feitas pelo commit"	//commita as mudanças e adiciona comentario
+git branch nomeDaBranch		//cria uma branch
+git checkout nomeDaBranch	//muda para branch selecionada
+git checkout master		//volta para o repositorio master
+git push	//se o "master" estiver liberado, manda as modificaçoes commitadas para o repositorio que foi clonado(o master) 
+git push -u /home/...	//usa o -u e o caminho da pasta para mudarpara o local do novo repositorio master onde os push serao enviados de agora em diante
