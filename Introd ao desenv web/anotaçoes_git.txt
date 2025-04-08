@@ -2,7 +2,7 @@
 git config --global user.name "gokw"			//configura o nome de usuario
 git config --global user.email "gokw@uffs.edu.br"	//configura o email
 git init --bare		//inicia o repositorio 'master'
-git merge nomeDaBranch	//os arquivos da 'nomeDaBranch' são adicionados a branch usada no momento
+git merge nomeDaBranch	//os arquivos da 'nomeDaBranch' são adicionados (dar merge) a branch usada no momento
 
 dentro da pasta "master"
 git config receive.denyCurrentBranch 'warn'	//libera o push dos clones
