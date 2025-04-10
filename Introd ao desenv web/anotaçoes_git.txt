@@ -18,3 +18,16 @@ git checkout nomeDaBranch	//muda para branch selecionada
 git checkout master		//volta para o repositorio master
 git push	//se o "master" estiver liberado, manda as modificaçoes commitadas para o repositorio que foi clonado(o master) 
 git push -u /home/...	//usa o -u e o caminho da pasta para mudarpara o local do novo repositorio master onde os push serao enviados de agora em diante
+
+//---comandos para enviar do pc para o github
+//configurar o usuario e o email do git antes de tudo
+//criar uma pasta especifica para executar os comandos dentro
+git clone https://github.com/"caminho do repositorio que recebera os arquivos"  //vai baixar o repositorio do github no pc
+git init  //inicia o git dentro da pasta atual
+//depois de criar ou modificar o que for preciso
+git add nomeDoArquivo.txt nomeDoArquivo.py  //adiciona os arquivos especificados na fila que espera um commit
+git commit -m "comentarios sobre o que esta sendo feito nesse commit"
+//git remote add origin https://github.com/"caminho do repositorio que recebera os arquivos"  //esse comando só é usado se a pasta do pc não tenha sido clonada do github, se ela foi criada localmente
+git branch -M main  //nome da brach do pc, nesse caso "main"
+git push -u origin main  //envia o commit para o github, precisa do usuario e do token para funcionar
+//token em: clica na imagem do usuario -> settings -> descendo na esquerda "developer settings" -> personal access token -> tokens(classic) -> generate new token -> generate new token(classic) -> da o nome do token, seleciona a expiraçao, e seleciona as permissoes (para nao dar erro selecione todas elas) e clique em "generate token" -> o token só aparece quando é criado então salve em um .txt
