@@ -25,7 +25,9 @@ git push -u /home/...	//usa o -u e o caminho da pasta para mudarpara o local do 
 git clone https://github.com/"caminho do repositorio que recebera os arquivos"  //vai baixar o repositorio do github no pc
 git init  //inicia o git dentro da pasta atual
 //depois de criar ou modificar o que for preciso
-git add nomeDoArquivo.txt nomeDoArquivo.py  //adiciona os arquivos especificados na fila que espera um commit
+//use só um dos git add
+git add nomeDoArquivo.txt nomeDoArquivo.py  //adiciona os arquivos especificados na area de staging (esperando commit)
+git add .                                   //adiciona todos os arquivos da pasta na area de staging
 git commit -m "comentarios sobre o que esta sendo feito nesse commit"
 //git remote add origin https://github.com/"caminho do repositorio que recebera os arquivos"  //esse comando só é usado se a pasta do pc não tenha sido clonada do github, se ela foi criada localmente
 git branch -M main  //nome da brach do pc, nesse caso "main"
