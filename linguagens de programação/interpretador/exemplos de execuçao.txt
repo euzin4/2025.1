@@ -1,0 +1,12 @@
+-uma soma simples:
+no terminal: step (Add (Num 2)(Num 3))
+
+
+-um if simples:
+if (true) then{
+    1
+else
+    2
+}
+no terminal: step(If BTrue (Num 1)(Num 2))
+
