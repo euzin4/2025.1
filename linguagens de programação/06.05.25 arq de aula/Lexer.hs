@@ -5,5 +5,5 @@ data Expr = BTrue
         | Num Int
         | Add Expr Expr
         | And Expr Expr
---        | If 
+        | If Expr Expr Expr
         deriving Show
