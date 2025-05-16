@@ -10,5 +10,13 @@ else
 }
 no terminal: step(If BTrue (Num 1)(Num 2))
 
+==============================
 -usando o main.hs
 runghc Main.hs < nomeDoArqComCodigo.algo
+
+-Para testar o interpretador no Linux é possível rodar:
+runghc Main.hs < examples/ex1.hs 
+ou
+echo "2 + 5" | runghc Main.hs
+==============================
+
