@@ -8,10 +8,14 @@ data Expr = BTrue
           | Add Expr Expr 
           | And Expr Expr 
           | If Expr Expr Expr 
+          | Var String
+          | Lam String Ty Expr
+          | App Expr Expr
           deriving Show 
 
 data Ty = TBool 
         | TNum 
+        | TFun Ty Ty 
         deriving (Show, Eq)
 
 data Token = TokenTrue 

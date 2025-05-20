@@ -20,3 +20,6 @@ ou
 echo "2 + 5" | runghc Main.hs
 ==============================
 
+-usando funcao lambda:
+step(App (Lam "num" (Add(Var "num") (Num 2))) (Num 10))
+
