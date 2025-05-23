@@ -1,3 +1,4 @@
+-- para compilar no terminal: $happy Parser.y
 {
 module Parser where 
 

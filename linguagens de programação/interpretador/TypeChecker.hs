@@ -2,9 +2,9 @@ module TypeChecker where
 
 import Lexer 
 
-type Ctx = [(String, Ty)] 
+type Ctx = [(String, Ty)]
 
-typeof :: Expr -> Maybe Ty 
+typeof :: Ctx -> Expr -> Maybe Ty 
 typeof ctx (Num _) = Just TNum 
 typeof ctx BFalse = Just TBool 
 typeof ctx BTrue = Just TBool 
@@ -20,23 +20,26 @@ typeof ctx (If e1 e2 e3) =
                       (Just t1, Just t2) | t1 == t2  -> Just t1  
                                          | otherwise -> Nothing 
                       _ -> Nothing 
-      _ -> Nothing 
+      _ -> Nothing
 typeof ctx (Var v) = lookup v ctx 
-typeof ctx (Lam x t b) = let ctx' = (x, t1) : ctx in 
+typeof ctx (Lam x t1 b) = let ctx' = (x, t1) : ctx in 
                             case typeof ctx' b of 
-                              Just t2 -> Just (TFun t1 t2)    --TFun: tipo de funçao
-                              _       -> Nothing
+                              Just t2 -> Just (TFun t1 t2)
+                              _       -> Nothing 
 typeof ctx (App e1 e2) = 
-  case (typeof ctx e1) of
-    Just (TFun t11 t12) -> case typeof ctx e2 of
-                            Just t2 -> if t11 == t12 then
-                                          Just t12
-                                        else
-                                          Nothing
-                            _ -> Nothing 
+  case (typeof ctx e1) of 
+    Just (TFun t11 t12) -> case typeof ctx e2 of 
+                             Just t2 -> if t11 == t2 then 
+                                          Just t12 
+                                        else 
+                                          Nothing 
+                             _ -> Nothing 
+    _ -> Nothing 
+
+                             
 
 typecheck :: Expr -> Expr  
-typecheck e = case typeof e of 
+typecheck e = case typeof [] e of 
                 Just _ -> e 
                 _      -> error "Erro de tipo!"
 
