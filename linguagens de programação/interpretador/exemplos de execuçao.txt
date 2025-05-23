@@ -23,3 +23,16 @@ echo "2 + 5" | runghc Main.hs
 -usando funcao lambda:
 step(App (Lam "num" (Add(Var "num") (Num 2))) (Num 10))
 
+-lambda 2:
+(\b : Boolean ->
+    if b then
+        2+3
+    else 
+        5+7
+) true 
+
+-lambda 3:
+(((\x : Number ->
+  (\y : Number ->
+   x+y)
+) 2) 8)
