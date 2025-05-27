@@ -2,3 +2,5 @@
 
 -implementar add, sub, mul e 'let';
 
+-'let' pg 124 do livro
+
