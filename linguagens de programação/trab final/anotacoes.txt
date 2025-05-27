@@ -1,2 +1,4 @@
-implementar add, sub, mul e 'let';
+-para compilar o Parser.y (no terminal): $ happy Parser.y
+
+-implementar add, sub, mul e 'let';
 
