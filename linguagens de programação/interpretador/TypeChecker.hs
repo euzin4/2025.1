@@ -35,6 +35,7 @@ typeof ctx (App e1 e2) =
                                           Nothing 
                              _ -> Nothing 
     _ -> Nothing 
+typeof ctx (Paren e) = typeof ctx e 
 
                              
 

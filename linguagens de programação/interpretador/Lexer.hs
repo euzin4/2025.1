@@ -11,6 +11,7 @@ data Expr = BTrue
           | Var String 
           | Lam String Ty Expr 
           | App Expr Expr 
+          | Paren Expr 
           deriving Show 
 
 data Ty = TBool 
@@ -26,12 +27,25 @@ data Token = TokenTrue
            | TokenIf 
            | TokenThen
            | TokenElse 
+           | TokenVar String 
+           | TokenLam 
+           | TokenColon
+           | TokenArrow 
+           | TokenTNum 
+           | TokenTBool
+           | TokenLParen 
+           | TokenRParen  
            deriving Show 
 
 lexer :: String -> [Token]
 lexer [] = [] 
 lexer ('+':cs) = TokenAdd : lexer cs 
+lexer ('\\':cs) = TokenLam : lexer cs 
+lexer (':':cs) = TokenColon : lexer cs 
+lexer ('(':cs) = TokenLParen : lexer cs 
+lexer (')':cs) = TokenRParen : lexer cs 
 lexer ('&':'&':cs) = TokenAnd : lexer cs 
+lexer ('-':'>':cs) = TokenArrow : lexer cs 
 lexer (c:cs) | isSpace c = lexer cs 
              | isDigit c = lexNum (c:cs) 
              | isAlpha c = lexKW (c:cs)
@@ -47,5 +61,7 @@ lexKW cs = case span isAlpha cs of
              ("if", rest) -> TokenIf : lexer rest 
              ("then", rest) -> TokenThen : lexer rest 
              ("else", rest) -> TokenElse : lexer rest 
-             _ -> error "Erro léxico: palavra-chave inválida!"
+             ("Number", rest) -> TokenTNum : lexer rest 
+             ("Boolean", rest) -> TokenTBool : lexer rest 
+             (var, rest) -> TokenVar var : lexer rest 
  
